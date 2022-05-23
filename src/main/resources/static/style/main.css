@@ -1,0 +1,19 @@
+/*.geotable td:hover {*/
+/*    background: rgba(0, 255, 0, 0.05);*/
+/*}*/
+
+.geotable td {
+    padding: 5px;
+}
+
+.geodiv:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.geodiv {
+    border-radius: 5px;
+}
+
+.elem-disabled {
+    pointer-events: none
+}
