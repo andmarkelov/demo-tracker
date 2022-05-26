@@ -1,10 +1,13 @@
 <template>
-  <div :class="enabled?'':'elem-disabled'">
-     <input  name="lat" v-model="lat" type="text" size="20" autocomplete="off" placeholder="latitude"/>
-      <input name="lon" v-model="lon" type="text" size="20" autocomplete="off" placeholder="longitude"/>
-      <button @click="addGeoPoint">add</button>
-  </div>
-
+  <v-form>
+    <v-container>
+      <v-row>
+        <v-col md="2"><v-text-field v-model="lat" label="latitude"></v-text-field> </v-col>
+        <v-col md="2"><v-text-field v-model="lon" label="longitude"></v-text-field></v-col>
+        <v-col><v-btn color="secondary"@click="addGeoPoint">add</v-btn></v-col>
+      </v-row>
+    </v-container>
+  </v-form>
 </template>
 
 <script>
@@ -20,7 +23,7 @@ export default {
     methods: {
       addGeoPoint() {
         const pointData = {lat: this.lat, lon: this.lon, created: new Date()};
-        this.enabled = false;
+        //this.enabled = false;
         this.$resource("/api/geo{/id}").save({}, pointData).then(
             result => {
               result.json().then(data => {
@@ -28,7 +31,7 @@ export default {
                 this.geo_points.push(data);
                 this.lat = '';
                 this.lon = '';
-                this.enabled = true;
+                //this.enabled = true;
               })
             }
 
@@ -41,6 +44,7 @@ export default {
 </script>
 
 <style>
+
 
 
 </style>

@@ -1,25 +1,57 @@
 <template>
-  <div>
-    <div class="container">
-      <div class="left_panel"style="border: gainsboro solid 1px; max-width: 300px">Some content</div>
-      <div class="title_panel">Points Manager</div>
-      <div class="points_panel" style="border-top: gainsboro solid 1px">
-        <geopos-edit-form :geo_points = "geo_points"/>
-        <geopos-list :items = "geo_points"/>
-      </div>
-      <div class="route_title_panel">Route title panel</div>
-      <div class="map_panel">Map</div>
-    </div>
+  <v-app>
+<!--       <v-main>-->
+<!--        <v-layout row wrap>-->
+<!--          <v-layout column color="blue">привет</v-layout>-->
+<!--          <v-layout row wrap>-->
+<!--              <geopos-edit-form :geo_points = "geo_points"/>-->
+<!--              <v-card height="100%" class="overflow-auto">-->
+<!--                <geopos-list :items = "geo_points"/>-->
+<!--              </v-card>-->
+<!--          </v-layout>-->
+<!--        </v-layout>-->
+<!--       </v-main>-->
+                <header>Points manager | User</header>
+                <v-layout no-gutters class="black">
+                  <v-row style="background: black" no-gutters>
+                    <v-col class="red">
+                      <routes-list/>
+                    </v-col>
+                    <v-col fill-height class="blue">
+                      <header class="yellow"><v-card>Route X:</v-card></header>
+                      <v-card flat fill-height class="overflow-auto">
+                        <v-layout no-gutters row wrap>
+                        <geopos-edit-form :geo_points = "geo_points"/>
+                        <geopos-list :items = "geo_points"/>
+                        </v-layout>
+                      </v-card>
+                    </v-col>
+                    <v-col fill-height class="white">
+                      <v-container fill-height class="d-flex justify-center">
+                      <v-img
+                          lazy-src="img/map_big_icon_preview.png"
+                          max-height="250"
+                          max-width="250"
+                          src="img/map_big_icon_preview.png"
+                          style="filter: alpha(Opacity=30);opacity: 0.3"
+                      ></v-img>
+                      </v-container>
+                    </v-col>
+                  </v-row>
+                </v-layout>
 
-  </div>
+    </v-app>
+
 </template>
 
 <script>
   import GeoposList from "components/GeoposList.vue";
   import GeoposEditForm from "components/GeoposEditForm.vue";
+  import RoutesList from "components/RoutesList.vue";
 
   export default {
     components: {
+      RoutesList,
       GeoposList,
       GeoposEditForm
     },
@@ -32,26 +64,5 @@
 </script>
 
 <style>
-.container {  display: grid;
-  grid-template-columns: 30% 50% 40%;
-  grid-template-rows: 30px 50px auto;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  align-content: space-between;
-  grid-template-areas:
-    "title_panel title_panel title_panel"
-    "left_panel route_title_panel route_title_panel"
-    "left_panel points_panel map_panel";
-}
-
-.left_panel { grid-area: left_panel; }
-
-.title_panel { grid-area: title_panel; }
-
-.points_panel { grid-area: points_panel; }
-
-.route_title_panel { grid-area: route_title_panel; }
-
-.map_panel { grid-area: map_panel; }
 
 </style>

@@ -17,3 +17,15 @@
 .elem-disabled {
     pointer-events: none
 }
+
+body {
+    -ms-overflow-style: none;  /* IE */
+    scrollbar-width: none;  /* Firefox */
+
+    margin: 0;
+    padding: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
