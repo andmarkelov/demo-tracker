@@ -1,6 +1,6 @@
 <template>
-  <v-card  class="overflow-y-auto">
-    <v-btn>Add</v-btn>
+<!--  <v-card  class="overflow-y-auto">-->
+  
   <v-list>
     <v-list-item-group
         mandatory
@@ -13,7 +13,8 @@
           :key="i"
       >
         <v-list-item-icon>
-          <v-icon v-text="item.icon"></v-icon>
+          <v-img max-height="64" max-width="64" :src="item.icon"></v-img>
+<!--          <v-icon ="item.icon"></v-icon>-->
         </v-list-item-icon>
 
         <v-list-item-content>
@@ -22,7 +23,7 @@
       </v-list-item>
     </v-list-item-group>
   </v-list>
-  </v-card>
+<!--  </v-card>-->
 </template>
 
 <script>
@@ -31,63 +32,63 @@ export default {
     return {
       items: [
         {
-          icon: 'mdi-wifi',
-          text: 'Wifi',
+          icon: 'img/go-kart-track.svg',
+          text: 'Wifi1',
         },
         {
-          icon: 'mdi-bluetooth',
+          icon: 'img/go-kart-track.svg',
           text: 'Bluetooth',
         },
         {
-          icon: 'mdi-chart-donut',
+          icon: 'img/go-kart-track.svg',
           text: 'Data Usage',
         },
         {
-          icon: 'mdi-wifi',
+          icon: 'img/go-kart-track.svg',
           text: 'Wifi',
         },
         {
-          icon: 'mdi-bluetooth',
+          icon: 'img/go-kart-track.svg',
           text: 'Bluetooth',
         },
         {
-          icon: 'mdi-chart-donut',
+          icon: 'img/go-kart-track.svg',
           text: 'Data Usage',
         },
         {
-          icon: 'mdi-wifi',
+          icon: 'img/go-kart-track.svg',
           text: 'Wifi',
         },
         {
-          icon: 'mdi-bluetooth',
+          icon: 'img/go-kart-track.svg',
           text: 'Bluetooth',
         },
         {
-          icon: 'mdi-chart-donut',
+          icon: 'img/go-kart-track.svg',
           text: 'Data Usage',
         },
         {
-          icon: 'mdi-wifi',
+          icon: 'img/go-kart-track.svg',
           text: 'Wifi',
         },
         {
-          icon: 'mdi-bluetooth',
+          icon: 'img/go-kart-track.svg',
           text: 'Bluetooth',
         },
         {
-          icon: 'mdi-chart-donut',
+          icon: 'img/go-kart-track.svg',
           text: 'Data Usage',
         },
         {
-          icon: 'mdi-wifi',
+          icon: 'img/go-kart-track.svg',
           text: 'Wifi',
         },
         {
-          icon: 'mdi-bluetooth',
+          icon: 'img/go-kart-track.svg',
           text: 'Bluetooth',
         },
         {
-          icon: 'mdi-chart-donut',
+          icon: 'img/go-kart-track.svg',
           text: 'Data Usage',
         },
 
