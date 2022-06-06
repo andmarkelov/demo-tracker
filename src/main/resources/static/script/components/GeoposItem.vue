@@ -14,7 +14,7 @@ export default {
   props: ['data'],
   methods: {
     deletePoint() {
-      this.$resource("/api/geo{/id}").delete({id: this.data.id}).then(result => {
+      this.$resource("/api/point{/id}").delete({id: this.data.id}).then(result => {
         this.$destroy();
         this.$el.parentNode.removeChild(this.$el);
       });

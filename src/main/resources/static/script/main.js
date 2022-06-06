@@ -4,6 +4,7 @@ import App from 'pages/App.vue'
 import Vuetify from "vuetify"
 import 'vuetify/dist/vuetify.min.css'
 
+
 Vue.use(VueResource);
 Vue.use(Vuetify);
 

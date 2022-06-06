@@ -35,3 +35,4 @@ build/
 /lib/
 /.mvn/wrapper/
 /yarn-error.log
+/yarn.lock

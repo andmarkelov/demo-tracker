@@ -1,74 +1,57 @@
 <template>
   <v-app>
-    <div class="main-container">
-
-      <v-toolbar style="flex:0">
+    <base-container>
+      <template v-slot:toolbar-content>
         <v-toolbar-title>Points manager</v-toolbar-title>
-      </v-toolbar>
+      </template>
+      <template v-slot:left-panel>
+        <track-list :items = "geo_tracks" v-model="current_track"/>
+      </template>
+      <template v-slot:center-title>
+        <track-info :track="current_track"></track-info>
+      </template>
+      <template v-slot:center-panel>
+        <geopos-edit-form :geo_points = "geo_points" :track="current_track"/>
+        <geopos-list :items = "geo_points" :track="current_track"/>
+      </template>
+    </base-container>
 
-      <div class="main-content">
-
-        <div class="main-content-container" style="width:300px">
-          <routes-list/>
-        </div>
-        <div style="display: grid;width:500px;grid-template-rows: 96px 1fr">
-          <v-card>Route X<br>info</v-card>
-          <div class="main-content-container">
-
-            <geopos-edit-form :geo_points = "geo_points"/>
-            <geopos-list :items = "geo_points"/>
-          </div>
-        </div>
-        <div style="flex:1;">
-          <v-container fill-height class="d-flex justify-center">
-            <v-img
-                lazy-src="img/map_big_icon_preview.png"
-                max-height="250"
-                max-width="250"
-                src="img/map_big_icon_preview.png"
-                style="filter: alpha(Opacity=30);opacity: 0.3"
-            ></v-img>
-          </v-container>
-        </div>
-      </div>
-    </div>
+    
     </v-app>
 
 </template>
 
 <script>
-  import GeoposList from "components/GeoposList.vue";
-  import GeoposEditForm from "components/GeoposEditForm.vue";
-  import RoutesList from "components/RoutesList.vue";
+  import GeoposList from "components/GeoposList.vue"
+  import GeoposEditForm from "components/GeoposEditForm.vue"
+  import TrackList from "components/TrackList.vue"
+  import TrackInfo from "components/TrackInfo.vue"
+  import BaseContainer from "components/BaseContainer.vue";
 
   export default {
     components: {
-      RoutesList,
+      BaseContainer,
+      TrackInfo,
+      TrackList,
       GeoposList,
       GeoposEditForm
     },
     data() {
       return {
-        geo_points: []
+        geo_tracks: [],
+        geo_points: [],
+        current_track: Object
       }
     }
+    // ,
+    // methods: {
+    //   trackSelectionChanged(event) {
+    //     this.current_track = event;
+    //   }
+    // }
   }
 </script>
 
 <style>
-.main-container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-.main-content {
-  flex:1;
-  display: flex;
-  overflow: auto;
-}
-.main-content-container {
-  overflow: auto;
-  scroll-behavior: smooth;
 
-}
 </style>

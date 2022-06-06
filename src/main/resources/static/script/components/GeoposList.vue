@@ -7,25 +7,24 @@
 <script>
 import GeoposItem from "components/GeoposItem.vue";
 
-//var pointRepo = Vue.resource("/api/geo{/id}");
-
-
 export default {
-  props: ['items'],
+  props: ['items', 'track'],
   components: {
     GeoposItem
   },
-  created() {
-    this.$resource("/api/geo{/id}").get().then(
-        result => result.json().then(
-            data => data.forEach(
-                point => this.items.push(point)
+  watch: {
+
+      track(newTrack, oldTrack) {
+        this.items = []
+        this.$resource("/api/track/{track_id}/point").get({track_id: newTrack.id}).then(
+            result => result.json().then(
+                data => data.forEach(
+                    point => this.items.push(point)
+                )
             )
         )
-    )
+      }
   }
-
-
 }
 </script>
 

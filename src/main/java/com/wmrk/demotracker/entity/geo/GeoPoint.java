@@ -1,18 +1,22 @@
 package com.wmrk.demotracker.entity.geo;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.wmrk.demotracker.controller.json_view.GeoPointViews;
+import com.wmrk.demotracker.controller.json_view.GeoTrackViews;
+
+import javax.persistence.*;
 
 @Entity
-public class GeoPoint {
+public class GeoPoint extends BaseGeoPoint {
     @Id
     @GeneratedValue
+    @JsonView({GeoPointViews.Short.class, GeoTrackViews.Short.class})
     private long id;
-    private float lat;
-    private float lon;
 
+    @ManyToOne(optional = false)
+    @JsonView(GeoPointViews.Full.class)
+    private GeoTrack track;
 
     public long getId() {
         return id;
@@ -22,19 +26,11 @@ public class GeoPoint {
         this.id = id;
     }
 
-    public float getLat() {
-        return lat;
+    public GeoTrack getTrack() {
+        return track;
     }
 
-    public void setLat(float lat) {
-        this.lat = lat;
-    }
-
-    public float getLon() {
-        return lon;
-    }
-
-    public void setLon(float longitude) {
-        this.lon = longitude;
+    public void setTrack(GeoTrack track) {
+        this.track = track;
     }
 }
