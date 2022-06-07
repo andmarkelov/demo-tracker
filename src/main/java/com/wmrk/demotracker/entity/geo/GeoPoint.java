@@ -5,7 +5,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.wmrk.demotracker.controller.json_view.GeoPointViews;
 import com.wmrk.demotracker.controller.json_view.GeoTrackViews;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class GeoPoint extends BaseGeoPoint {
@@ -17,6 +20,7 @@ public class GeoPoint extends BaseGeoPoint {
     @ManyToOne(optional = false)
     @JsonView(GeoPointViews.Full.class)
     private GeoTrack track;
+
 
     public long getId() {
         return id;
