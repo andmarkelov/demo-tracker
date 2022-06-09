@@ -8,10 +8,10 @@
     </v-toolbar>
 
     <div class="main-content">
-      <div class="main-content-container" style="width:300px">
+      <div class="main-content-container" style="width:400px">
         <slot name="left-panel"></slot>
       </div>
-      <div style="display: grid; width: 500px; grid-template-rows: 96px 1fr">
+      <div style="display: grid;  grid-template-rows: 96px 1fr; width: 600px">
         <!--          <v-card>-->
         <slot name="center-title"></slot>
         <!--          </v-card>-->
@@ -19,17 +19,21 @@
           <slot name="center-panel"></slot>
         </div>
       </div>
-      <div style="flex:1;">
-        <v-container fill-height class="d-flex justify-center">
-          <v-img
-              lazy-src="img/map_big_icon_preview.png"
-              max-height="250"
-              max-width="250"
-              src="img/map_big_icon_preview.png"
-              style="filter: alpha(Opacity=30);opacity: 0.3"
-          ></v-img>
-        </v-container>
-      </div>
+<!--      <div style="width: 100%">-->
+        <slot name="right-panel"></slot>
+<!--      </div>-->
+<!--      <div style="flex:1;">-->
+<!--        <v-container fill-height >-->
+<!--          -->
+<!--&lt;!&ndash;          <v-img&ndash;&gt;-->
+<!--&lt;!&ndash;              lazy-src="img/map_big_icon_preview.png"&ndash;&gt;-->
+<!--&lt;!&ndash;              max-height="250"&ndash;&gt;-->
+<!--&lt;!&ndash;              max-width="250"&ndash;&gt;-->
+<!--&lt;!&ndash;              src="img/map_big_icon_preview.png"&ndash;&gt;-->
+<!--&lt;!&ndash;              style="filter: alpha(Opacity=30);opacity: 0.3"&ndash;&gt;-->
+<!--&lt;!&ndash;          ></v-img>&ndash;&gt;-->
+<!--        </v-container>-->
+<!--      </div>-->
     </div>
   </div>
 </template>

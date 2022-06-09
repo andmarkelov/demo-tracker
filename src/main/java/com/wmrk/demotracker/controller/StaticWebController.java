@@ -2,6 +2,7 @@ package com.wmrk.demotracker.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -9,6 +10,7 @@ public class StaticWebController {
 
     
     @GetMapping({"/", "/index"})
+    @CrossOrigin(origins = "*")
     public String index() {
         //long count = geoPointRepo.count();
         return "index.html";
@@ -20,8 +22,9 @@ public class StaticWebController {
     }
 
     @GetMapping("/manage")
+    @CrossOrigin(origins = "*")
     public String manage() {
-        return "manage.html";
+        return "manage";
     }
     
 }

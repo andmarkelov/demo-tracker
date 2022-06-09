@@ -1,20 +1,24 @@
 <template>
-  <div>
-    <span :class="{ 'trackTitleGained': track.nameChanged }">{{ track.name }}</span>
+  <div style="margin: 5px; margin-top: 10px; ">
+    <editable-caption  :class="{ 'trackTitleGained': track.nameChanged }" :text="track.name"/>
     <br>
     info
   </div>
 </template>
 
 <script>
-  export default {
-    props: ['track']
+  import EditableCaption from "./EditableCaption.vue";
 
+  export default {
+    props: ['track'],
+    components: {
+      EditableCaption
+    }
   }
 </script>
 
 <style scoped>
-  .trackTitleGained {
+  .trackTitleGained text {
     font-weight: bold;
   }
 </style>

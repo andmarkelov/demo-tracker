@@ -14,6 +14,9 @@
         <geopos-edit-form :geo_points = "geo_points" :track="current_track"/>
         <geopos-list :items = "geo_points" :track="current_track"/>
       </template>
+      <template v-slot:right-panel>
+        <geo-map :track="current_track"></geo-map>
+      </template>
     </base-container>
 
     
@@ -27,14 +30,16 @@
   import TrackList from "components/TrackList.vue"
   import TrackInfo from "components/TrackInfo.vue"
   import BaseContainer from "components/BaseContainer.vue";
+  import GeoMap from "components/GeoMap.vue";
 
   export default {
     components: {
+      GeoMap,
       BaseContainer,
       TrackInfo,
       TrackList,
       GeoposList,
-      GeoposEditForm
+      GeoposEditForm,
     },
     data() {
       return {
@@ -53,5 +58,10 @@
 </script>
 
 <style>
-
+   .map-iframe {
+     border: 0;
+     height: 100%;
+     width: 100%;
+     background-color: gainsboro;
+   }
 </style>

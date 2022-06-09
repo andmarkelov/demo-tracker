@@ -8,9 +8,14 @@
 import GeoposItem from "components/GeoposItem.vue";
 
 export default {
-  props: ['items', 'track'],
+  props: ['track'],
   components: {
     GeoposItem
+  },
+  data() {
+    return {
+      items:''
+    }
   },
   watch: {
 

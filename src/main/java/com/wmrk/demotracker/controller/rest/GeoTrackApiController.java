@@ -17,9 +17,6 @@ import org.springframework.web.bind.annotation.*;
 public class GeoTrackApiController {
     @Autowired
     private GeoTrackRepo geoTrackRepo;
-
-    @Autowired
-    GeoPointRepo geoPointRepo;
     
     @GetMapping
     @JsonView(GeoTrackViews.Short.class)
@@ -45,17 +42,5 @@ public class GeoTrackApiController {
         return new GeoJsonEntity(geoTrack);
     }
 
-//    @GetMapping(value = "{track_id}/updll")
-//    public String updateLatLon(@PathVariable("track_id") GeoTrack geoTrack) {
-//        SphericalMercatorConverter converter = new SphericalMercatorConverter();
-//        geoTrack.getPoints().forEach(point -> {
-//            double lat = converter.latitude(point.getLon());
-//            double lon = converter.longitude(point.getLat());
-//            point.setLat(lat);
-//            point.setLon(lon);
-//            geoPointRepo.save(point);
-//        });
-//
-//        return "ok";
-//    }
+
 }

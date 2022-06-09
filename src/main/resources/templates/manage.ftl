@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <title>Points manager</title>
     <link rel="icon" type="image/png" href="img/favicon.png" />
-<!--    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>-->
-<!--    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.3"></script>-->
     <link rel="stylesheet" href="style/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
@@ -13,8 +11,6 @@
 
 <div id="app"></div>
 
-<!--<script src="script/main.js"></cript>-->
-<!-- Vue.js -->
-<script src="http://localhost:8000/main.js"> </script>
+<script src="http://localhost:8000/main.js"></script>
 </body>
 </html>
