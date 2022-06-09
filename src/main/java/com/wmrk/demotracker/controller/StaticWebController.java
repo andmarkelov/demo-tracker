@@ -1,7 +1,11 @@
 package com.wmrk.demotracker.controller;
 
 
+import com.fasterxml.jackson.core.io.JsonStringEncoder;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -23,7 +27,8 @@ public class StaticWebController {
 
     @GetMapping("/manage")
     @CrossOrigin(origins = "*")
-    public String manage() {
+    public String manage(@AuthenticationPrincipal User currentUser, Model model) {
+        model.addAttribute("spring_username", currentUser.getUsername());
         return "manage";
     }
     

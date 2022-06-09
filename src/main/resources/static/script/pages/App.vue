@@ -3,6 +3,13 @@
     <base-container>
       <template v-slot:toolbar-content>
         <v-toolbar-title>Points manager</v-toolbar-title>
+        <v-spacer></v-spacer>
+
+        <user-menu :user_object="user_object"/>
+<!--        <v-btn icon href="/logout">-->
+<!--          <v-img max-width="24" max-height="24" src="img/location-exit.png"></v-img>-->
+<!--        </v-btn>-->
+
       </template>
       <template v-slot:left-panel>
         <track-list :items = "geo_tracks" v-model="current_track"/>
@@ -31,6 +38,7 @@
   import TrackInfo from "components/TrackInfo.vue"
   import BaseContainer from "components/BaseContainer.vue";
   import GeoMap from "components/GeoMap.vue";
+  import UserMenu from "components/UserMenu.vue";
 
   export default {
     components: {
@@ -40,13 +48,18 @@
       TrackList,
       GeoposList,
       GeoposEditForm,
+      UserMenu
     },
     data() {
       return {
         geo_tracks: [],
         geo_points: [],
-        current_track: Object
+        current_track: Object,
+        user_object: {name: document.spring_username, email:"pupalupa@msk.ru", userpic: "https://cdn.vuetifyjs.com/images/john.jpg"}
       }
+    },
+    created() {
+
     }
     // ,
     // methods: {
