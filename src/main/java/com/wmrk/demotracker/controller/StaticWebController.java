@@ -6,30 +6,44 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class StaticWebController {
 
     
     @GetMapping({"/", "/index"})
-    @CrossOrigin(origins = "*")
     public String index() {
-        //long count = geoPointRepo.count();
         return "index.html";
     }
 
-    @GetMapping("/map")
-    public String map() {
-        return "map.html";
+
+
+    @GetMapping({"/manage", "/reg", "/logout"})
+    public String vueApp(@AuthenticationPrincipal User currentUser, Model model) {
+        model.addAttribute("spring_username", currentUser != null ? currentUser.getUsername() : "");
+
+        return "vue-app";
     }
 
-    @GetMapping("/manage")
-    @CrossOrigin(origins = "*")
-    public String manage(@AuthenticationPrincipal User currentUser, Model model) {
-        model.addAttribute("spring_username", currentUser.getUsername());
-        return "manage";
+
+
+    @RequestMapping(value = "/auth",
+            produces = "text/html",
+            method = {RequestMethod.GET, RequestMethod.POST})
+
+    public String login(@AuthenticationPrincipal User currentUser, Model model) {
+        model.addAttribute("spring_username", currentUser != null ? currentUser.getUsername() : "");
+
+        return "vue-app";
     }
+
+//    @PostMapping("/login")
+//    @CrossOrigin(origins = "*")
+//    public String manage2(@AuthenticationPrincipal User currentUser, Model model) {
+//        model.addAttribute("spring_username", currentUser != null ? currentUser.getUsername() : "");
+//
+//        return "vue-app";
+//    }
     
 }

@@ -28,7 +28,7 @@
               </v-list-item-avatar>
 
               <v-list-item-content>
-                <v-list-item-title>{{user_object.name}}</v-list-item-title>
+                <v-list-item-title>@<b>{{user_object.name}}</b></v-list-item-title>
                 <v-list-item-subtitle>{{user_object.email}}</v-list-item-subtitle>
               </v-list-item-content>
 

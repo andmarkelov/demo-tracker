@@ -13,6 +13,7 @@ module.exports = {
             'localhost:8080'
         ]
     },
+  
     module: {
         rules: [
             {
