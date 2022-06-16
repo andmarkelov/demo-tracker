@@ -17,8 +17,13 @@
 export default {
   props: ['track'],
   watch: {
-    track(newTrack, oldTrack) {
-      document.getElementById("map-iframe").contentWindow.postMessage('data-url', `http://localhost:8080/api/track/${newTrack.id}/geoJson`)
+    async track(newTrack, oldTrack) {
+      const response = await fetch(`http://localhost:8080/api/track/${newTrack.id}/geoJson`);
+      response.json().then(function (result) {
+        document.getElementById("map-iframe").contentWindow
+            .postMessage({geo: result.routes[0].geometry}, '*');
+      });
+
     }
   }
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/track")
+@CrossOrigin(origins = "*")
 public class GeoTrackApiController {
     @Autowired
     private GeoTrackRepo geoTrackRepo;
@@ -37,7 +38,6 @@ public class GeoTrackApiController {
     }
 
     @GetMapping(value = "{track_id}/geoJson")
-    @CrossOrigin(origins = "*")
     public GeoJsonEntity getGeoJson(@PathVariable("track_id") GeoTrack geoTrack) {
         return new GeoJsonEntity(geoTrack);
     }

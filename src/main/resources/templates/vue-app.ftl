@@ -10,7 +10,9 @@
 <body>
 
 <script>
+    <#if spring_username??>
     document.__proto__.spring_username = '${spring_username}';
+    </#if>
 </script>
 
 <div id="app"></div>

@@ -18,7 +18,7 @@
     </template>
     <template v-slot:center-panel>
       <geopos-edit-form :geo_points = "geo_points" :track="current_track"/>
-      <geopos-list :items = "geo_points" :track="current_track"/>
+<!--      <geopos-list :items = "geo_points" :track="current_track"/>-->
     </template>
     <template v-slot:right-panel>
       <geo-map :track="current_track"></geo-map>

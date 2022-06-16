@@ -3,6 +3,7 @@ package com.wmrk.demotracker.entity.geo;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.wmrk.demotracker.controller.json_view.GeoPointViews;
 import com.wmrk.demotracker.controller.json_view.GeoTrackViews;
+import com.wmrk.demotracker.entity.GeoDevice;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,6 +18,11 @@ public class GeoTrack {
     private String name;
     @JsonView(GeoTrackViews.Short.class)
     private boolean nameChanged;
+
+
+
+    @ManyToOne
+    private GeoDevice device;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "track", orphanRemoval = true)
     @JsonView(GeoTrackViews.Full.class)
@@ -53,6 +59,14 @@ public class GeoTrack {
 
     public void setPoints(List<GeoPoint> tracks) {
         this.points = tracks;
+    }
+
+    public GeoDevice getDevice() {
+        return device;
+    }
+
+    public void setDevice(GeoDevice device) {
+        this.device = device;
     }
     
 }

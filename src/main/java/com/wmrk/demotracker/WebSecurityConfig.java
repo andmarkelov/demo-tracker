@@ -37,20 +37,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-//    @Bean
-//    @Override
-//    public UserDetailsService userDetailsService() {
-//        UserDetails user =
-//                User.withDefaultPasswordEncoder()
-//                        .username("admin")
-//                        .password("admin")
-//                        .roles("ADMIN")
-//                        .build();
-//
-//        return new InMemoryUserDetailsManager(user);
-//    }
-
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.
@@ -62,4 +48,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "inner join user_role as ur on u.id = ur.user_id where u.name=?");
 
     }
+
+
 }
