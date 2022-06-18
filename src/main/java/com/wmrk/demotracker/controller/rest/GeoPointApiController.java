@@ -37,6 +37,5 @@ public class GeoPointApiController {
         geoPointRepo.delete(geoPoint);
     }
 
-
-
+    
 }
