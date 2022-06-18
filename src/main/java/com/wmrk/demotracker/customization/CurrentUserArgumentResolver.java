@@ -18,11 +18,12 @@ public final class CurrentUserArgumentResolver implements HandlerMethodArgumentR
     @Autowired
     private UserRepo userRepo;
 
-    private final Class RESOLVED_CLASS = CurrentUser.class;
+    private final Class RESOLVED_CLASS = com.wmrk.demotracker.entity.User.class;
+    private final Class ANNOTATION_CLASS = CurrentUser.class;
 
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
-        return methodParameter.getParameterType().equals(RESOLVED_CLASS);
+         return methodParameter.hasParameterAnnotation(ANNOTATION_CLASS) && methodParameter.getParameterType().equals(RESOLVED_CLASS);
     }
 
     @Override
@@ -32,7 +33,7 @@ public final class CurrentUserArgumentResolver implements HandlerMethodArgumentR
     ) throws Exception {
             Principal principal = nativeWebRequest.getUserPrincipal();
             User user = (User) ((Authentication) principal).getPrincipal();
-            return (CurrentUser)() -> userRepo.findByNameIgnoreCase(user.getUsername());
+            return userRepo.findByNameIgnoreCase(user.getUsername());
     }
 
     private boolean isNotSet(String value) {

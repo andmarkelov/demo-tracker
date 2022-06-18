@@ -1,10 +1,15 @@
 package com.wmrk.demotracker.customization;
 
-import com.wmrk.demotracker.entity.User;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
- * functional marker interface for {@link CurrentUserArgumentResolver}
+ * annotation for current user in MVC, resolved in {@link CurrentUserArgumentResolver}
  */
-public interface CurrentUser {
-    public User get();
+@Target(ElementType.PARAMETER)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface CurrentUser {
+
 }
