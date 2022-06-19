@@ -3,13 +3,15 @@ package com.wmrk.demotracker.entity.geo;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.wmrk.demotracker.controller.json_view.GeoPointViews;
 import com.wmrk.demotracker.controller.json_view.GeoTrackViews;
+import com.wmrk.demotracker.customization.Ownable;
 import com.wmrk.demotracker.entity.GeoDevice;
+import com.wmrk.demotracker.entity.User;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class GeoTrack {
+public class GeoTrack implements Ownable {
     @Id
     @GeneratedValue
     @JsonView({GeoTrackViews.Short.class, GeoPointViews.Full.class})
@@ -18,9 +20,6 @@ public class GeoTrack {
     private String name;
     @JsonView(GeoTrackViews.Short.class)
     private boolean nameChanged;
-
-
-
     @ManyToOne
     private GeoDevice device;
 
@@ -68,5 +67,9 @@ public class GeoTrack {
     public void setDevice(GeoDevice device) {
         this.device = device;
     }
-    
+
+    @Override
+    public User getOwner() {
+        return device.getOwner();
+    }
 }

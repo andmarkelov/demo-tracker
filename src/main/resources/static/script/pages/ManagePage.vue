@@ -10,8 +10,11 @@
       <!--        </v-btn>-->
 
     </template>
+    <template v-slot:left-panel-title>
+      <device-selector v-model="current_device"/>
+    </template>
     <template v-slot:left-panel>
-      <track-list :items = "geo_tracks" v-model="current_track"/>
+      <track-list :device="current_device" :items = "geo_tracks" v-model="current_track"/>
     </template>
     <template v-slot:center-title>
       <track-info :track="current_track"></track-info>
@@ -34,9 +37,11 @@ import TrackInfo from "components/TrackInfo.vue"
 import BaseContainer from "components/BaseContainer.vue";
 import GeoMap from "components/GeoMap.vue";
 import UserMenu from "components/UserMenu.vue";
+import DeviceSelector from "components/DeviceSelector.vue";
 
 export default {
   components: {
+    DeviceSelector,
     GeoMap,
     BaseContainer,
     TrackInfo,
@@ -50,7 +55,12 @@ export default {
       geo_tracks: [],
       geo_points: [],
       current_track: Object,
-      user_object: {name: document.spring_username, email:"pupalupa@msk.ru", userpic: "https://cdn.vuetifyjs.com/images/john.jpg"}
+      current_device: Object,
+      user_object: {
+        name: document.spring_username,
+        email:"pupalupa@msk.ru",
+        userpic: "https://cdn.vuetifyjs.com/images/john.jpg"
+      }
     }
   },
   created() {

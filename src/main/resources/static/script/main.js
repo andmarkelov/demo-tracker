@@ -37,10 +37,25 @@ const router = new VueRouter({
     mode: "history"
 });
 
+var vtf = new Vuetify({
+    icons: {
+        iconfont: 'mdi', // default
+        values: {
+            product: 'mdi-dropbox',
+            support: 'mdi-lifebuoy',
+            steam: 'mdi-steam-box',
+            pc: 'mdi-desktop-classic',
+            xbox: 'mdi-xbox',
+            playstation: 'mdi-playstation',
+            switch: 'mdi-nintendo-switch',
+        },
+    },
+})
+
 const app = new Vue({
     el: '#app',
     router,
-    vuetify: new Vuetify(),
+    vuetify: vtf,
     render: a => a(App)
 });
 

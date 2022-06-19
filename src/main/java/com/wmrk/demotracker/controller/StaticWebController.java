@@ -4,10 +4,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-@CrossOrigin(origins = "*")
 public class StaticWebController {
 
     @GetMapping({"/", "/index"})
@@ -16,7 +15,6 @@ public class StaticWebController {
     }
 
     @GetMapping({"/manage", "/reg", "/logout"})
-    @CrossOrigin(origins = "*")
     public String vueApp(@AuthenticationPrincipal User currentUser, Model model) {
         model.addAttribute("spring_username", currentUser != null ? currentUser.getUsername() : "");
 

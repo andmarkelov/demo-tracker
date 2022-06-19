@@ -24,23 +24,21 @@
 <script>
   import TrackListItem from "components/TrackListItem.vue"
 
-
-
   export default {
-    props: ['items'],
+    props: ['items', 'device'],
     components: {
       TrackListItem
     },
     created() {
-      this.$resource("/api/track{/id}").get().then(
-          result => result.json().then(data => {
-            data.forEach(track => {
-              track.icon = "img/go-kart-track.svg"
-              this.items.push(track)
-            })
-          this.onChange(this.curItem)
-          }),
-      );
+      // this.$resource("/api/track{/id}").get().then(
+      //     result => result.json().then(data => {
+      //       data.forEach(track => {
+      //         track.icon = "img/go-kart-track.svg"
+      //         this.items.push(track)
+      //       })
+      //     this.onChange(this.curItem)
+      //     }),
+      //);
       
 
     },
@@ -48,12 +46,34 @@
       return {
         model: 0
       }
-    } ,
+    },
+    watch: {
+      device(newDev, oldDev) {
 
+        this.items.length = 0;
+
+        this.$resource("/api/device{/dev_id}/tracks").get({dev_id: newDev.id}).then(
+            result => result.json().then(data => {
+              data.forEach(track => {
+                track.icon = "img/go-kart-track.svg"
+                this.items.push(track)
+              });
+
+              if(this.items.length > 0) {
+                this.curItem = this.items[0];
+                this.onChange(this.curItem);
+              }
+            })
+        );
+      }
+    },
     computed: {
       curItem: {
         get() {
           return this.items[this.model];
+        },
+        set(nothing) {
+          
         }
       }
     },

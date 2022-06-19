@@ -8,8 +8,13 @@
     </v-toolbar>
 
     <div class="main-content">
-      <div class="main-content-container" style="width:400px">
-        <slot name="left-panel"></slot>
+      <div style="display: grid;  grid-template-rows: 60px 1fr; width: 400px">
+        <div>
+          <slot name="left-panel-title" style="width:100%"></slot>
+        </div>
+        <div class="main-content-container" style="width:100%">
+          <slot name="left-panel"></slot>
+        </div>
       </div>
       <div style="display: grid;  grid-template-rows: 96px 1fr; width: 600px">
         <!--          <v-card>-->
