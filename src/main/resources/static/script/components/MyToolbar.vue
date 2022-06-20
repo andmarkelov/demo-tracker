@@ -1,6 +1,6 @@
 <template>
   <v-toolbar style="flex:0">
-    <v-toolbar-title>{{ this.title }}</v-toolbar-title>
+    <v-toolbar-title> {{ this.title }}</v-toolbar-title>
     <v-spacer></v-spacer>
 
     <slot name="inner"></slot>
@@ -16,7 +16,9 @@ export default {
   components: {
     UserMenu
   },
-  props: ['user_object', 'title']
+  props: [
+      'user_object',
+    'title']
 }
 </script>
 

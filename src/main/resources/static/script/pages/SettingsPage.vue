@@ -2,63 +2,61 @@
   <div>
     <my-toolbar title="Settings" :user_object="user_object">
       <template v-slot:inner>
-        <v-tabs value="2">
+        <v-tabs v-model="tabs">
           <v-tab to="/"><v-icon>mdi-arrow-left-bold</v-icon>Home</v-tab>
           <v-tab>User profile</v-tab>
           <v-tab>Devices</v-tab>
         </v-tabs>
       </template>
-
-
     </my-toolbar>
-<!--    <v-card>-->
-<!--      <v-toolbar-->
-<!--          color="white"-->
-<!--          flat-->
-<!--      >-->
-<!--        <v-app-bar-nav-icon></v-app-bar-nav-icon>-->
 
-<!--        <v-toolbar-title>Your Dashboard</v-toolbar-title>-->
+    <v-main>
+    <v-tabs-items v-model="tabs">
+      <v-tab-item>
 
-<!--        <v-spacer></v-spacer>-->
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-<!--        <v-btn icon>-->
-<!--          <v-icon>mdi-magnify</v-icon>-->
-<!--        </v-btn>-->
+      </v-tab-item>
+      <v-tab-item>
+        <v-card flat>
+          <v-card-title class="text-h5">
+            An awesome title
+          </v-card-title>
+          <v-card-text>
+            <p>
+              Duis lobortis massa imperdiet quam. Donec vitae orci sed dolor rutrum auctor. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Praesent congue erat at massa.
+            </p>
 
-<!--        <v-btn icon>-->
-<!--          <v-icon>mdi-dots-vertical</v-icon>-->
-<!--        </v-btn>-->
+            <p>
+              Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Etiam sit amet orci eget eros faucibus tincidunt. Donec sodales sagittis magna.
+            </p>
 
-<!--        <template v-slot:extension>-->
-<!--          <v-tabs-->
-<!--              v-model="tab"-->
-<!--              align-with-title-->
-<!--          >-->
-<!--            <v-tabs-slider color="yellow"></v-tabs-slider>-->
+            <p class="mb-0">
+              Ut leo. Suspendisse potenti. Duis vel nibh at velit scelerisque suscipit. Fusce pharetra convallis urna.
+            </p>
+          </v-card-text>
+        </v-card>
+      </v-tab-item>
+      <v-tab-item>
+        <v-card flat>
+          <v-card-title class="text-h5">
+            An even better title
+          </v-card-title>
+          <v-card-text>
+            <p>
+              Maecenas ullamcorper, dui et placerat feugiat, eros pede varius nisi, condimentum viverra felis nunc et lorem. Sed hendrerit. Maecenas malesuada. Vestibulum ullamcorper mauris at ligula. Proin faucibus arcu quis ante.
+            </p>
 
-<!--            <v-tab-->
-<!--                v-for="item in items"-->
-<!--                :key="item"-->
-<!--            >-->
-<!--              {{ item }}-->
-<!--            </v-tab>-->
-<!--          </v-tabs>-->
-<!--        </template>-->
-<!--      </v-toolbar>-->
-
-<!--      <v-tabs-items v-model="tab">-->
-<!--        <v-tab-item-->
-<!--            v-for="item in items"-->
-<!--            :key="item"-->
-<!--        >-->
-<!--          <v-card flat>-->
-<!--            <v-card-text v-text="text"></v-card-text>-->
-<!--          </v-card>-->
-<!--        </v-tab-item>-->
-<!--      </v-tabs-items>-->
-<!--    </v-card>-->
+            <p class="mb-0">
+              Etiam vitae tortor. Curabitur ullamcorper ultricies nisi. Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Aliquam lobortis. Suspendisse potenti.
+            </p>
+          </v-card-text>
+        </v-card>
+      </v-tab-item>
+    </v-tabs-items>
+    </v-main>
   </div>
+
 </template>
 
 <script>
@@ -73,7 +71,9 @@ export default {
         name: document.spring_username,
         email:"pupalupa@msk.ru",
         userpic: "https://cdn.vuetifyjs.com/images/john.jpg"
-      }
+      },
+      tabs: 2,
+      text: undefined
     }
   },
 }
