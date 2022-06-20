@@ -1,4 +1,4 @@
-package com.wmrk.demotracker.serializer;
+package com.wmrk.demotracker.util.serializer;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.wmrk.demotracker.entity.geo.GeoTrack;

@@ -1,4 +1,4 @@
-package com.wmrk.demotracker.customization;
+package com.wmrk.demotracker.util.customization;
 
 import com.wmrk.demotracker.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import java.security.Principal;
 
 @Component
-public final class CheckOwnerArgumentResolver implements HandlerMethodArgumentResolver {
+public final class CurrentUserArgumentResolver implements HandlerMethodArgumentResolver {
     @Autowired
     private UserRepo userRepo;
 
@@ -23,7 +23,7 @@ public final class CheckOwnerArgumentResolver implements HandlerMethodArgumentRe
 
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
-        return methodParameter.hasParameterAnnotation(ANNOTATION_CLASS) && methodParameter.getParameterType().equals(RESOLVED_CLASS);
+         return methodParameter.hasParameterAnnotation(ANNOTATION_CLASS) && methodParameter.getParameterType().equals(RESOLVED_CLASS);
     }
 
     @Override
@@ -31,9 +31,9 @@ public final class CheckOwnerArgumentResolver implements HandlerMethodArgumentRe
             MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer,
             NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory
     ) throws Exception {
-        Principal principal = nativeWebRequest.getUserPrincipal();
-        User user = (User) ((Authentication) principal).getPrincipal();
-        return userRepo.findByNameIgnoreCase(user.getUsername());
+            Principal principal = nativeWebRequest.getUserPrincipal();
+            User user = (User) ((Authentication) principal).getPrincipal();
+            return userRepo.findByNameIgnoreCase(user.getUsername());
     }
 
     private boolean isNotSet(String value) {

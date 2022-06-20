@@ -3,27 +3,28 @@
 
   <div class="main-container">
 
-    <v-toolbar style="flex:0">
-      <slot name="toolbar-content"></slot>
-    </v-toolbar>
+    <slot name="toolbar-content"></slot>
 
     <div class="main-content">
-      <div style="display: grid;  grid-template-rows: 60px 1fr; width: 400px">
+      <div style="display: grid;  grid-template-rows: 60px 1fr 100px; width: 600px">
         <div>
           <slot name="left-panel-title" style="width:100%"></slot>
         </div>
         <div class="main-content-container" style="width:100%">
           <slot name="left-panel"></slot>
         </div>
-      </div>
-      <div style="display: grid;  grid-template-rows: 96px 1fr; width: 600px">
-        <!--          <v-card>-->
-        <slot name="center-title"></slot>
-        <!--          </v-card>-->
-        <div class="main-content-container">
-          <slot name="center-panel"></slot>
+        <div>
+          <slot name="center-title"></slot>
         </div>
       </div>
+<!--      <div style="display: grid;  grid-template-rows: 96px 1fr; width: 600px">-->
+<!--        &lt;!&ndash;          <v-card>&ndash;&gt;-->
+<!--        <slot name="center-title"></slot>-->
+<!--        &lt;!&ndash;          </v-card>&ndash;&gt;-->
+<!--        <div class="main-content-container">-->
+<!--          <slot name="center-panel"></slot>-->
+<!--        </div>-->
+<!--      </div>-->
 <!--      <div style="width: 100%">-->
         <slot name="right-panel"></slot>
 <!--      </div>-->

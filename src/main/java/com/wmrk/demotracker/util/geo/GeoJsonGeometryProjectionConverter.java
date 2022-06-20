@@ -1,4 +1,4 @@
-package com.wmrk.demotracker.geo;
+package com.wmrk.demotracker.util.geo;
 
 import org.jetbrains.annotations.NotNull;
 

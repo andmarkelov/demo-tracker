@@ -5,15 +5,22 @@
         :items="items"
         item-text="name"
         item-value="id"
-        label="Please select a device"
+        label="Please select a tracker device"
         no-data-text="No devices found"
         prepend-inner-icon="mdi-cellphone-marker"
         hide-details="true"
+        filled
         return-object
         single-line
         :loading="loading"
         :disabled="loading"
-    ></v-select>
+    >
+<!--     <template v-slot:item >-->
+<!--       <v-icon>mdi-cellphone-marker</v-icon>-->
+<!--       {{ this.item.name }}-->
+<!--     </template>-->
+
+    </v-select>
   </div>
 </template>
 

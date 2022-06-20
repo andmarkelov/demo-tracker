@@ -2,7 +2,7 @@ package com.wmrk.demotracker.entity;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.wmrk.demotracker.controller.json_view.GeoDeviceView;
-import com.wmrk.demotracker.customization.Ownable;
+import com.wmrk.demotracker.util.customization.Ownable;
 
 import javax.persistence.*;
 

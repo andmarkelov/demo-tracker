@@ -1,4 +1,4 @@
-package com.wmrk.demotracker.geo;
+package com.wmrk.demotracker.util.geo;
 
 public class SphericalMercatorConverter {
     public static final double LAT_LON_PRECISION = 1000000.0d;

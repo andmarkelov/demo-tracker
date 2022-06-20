@@ -1,7 +1,7 @@
 package com.wmrk.demotracker.config;
 
 
-import com.wmrk.demotracker.customization.CurrentUserArgumentResolver;
+import com.wmrk.demotracker.util.customization.CurrentUserArgumentResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;

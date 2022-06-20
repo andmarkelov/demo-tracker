@@ -7,6 +7,7 @@ import App from 'pages/App.vue'
 import LoginPage from "pages/LoginPage.vue";
 import RegistrationPage from "pages/RegistrationPage.vue";
 import ManagePage from "pages/ManagePage.vue";
+import SettingsPage from "pages/SettingsPage.vue";
 
 
 Vue.use(VueResource);
@@ -18,7 +19,7 @@ const NotFound = { template: "<div>Page not found</div>" };
 const router = new VueRouter({
     routes: [
         {
-            path: '/manage',
+            path: '/',
             component: ManagePage,
         },
         {
@@ -30,6 +31,10 @@ const router = new VueRouter({
             component: RegistrationPage,
         },
         {
+            path: '/settings',
+            component: SettingsPage,
+        },
+        {
             path: "*",
             component: NotFound
         }
@@ -37,25 +42,11 @@ const router = new VueRouter({
     mode: "history"
 });
 
-var vtf = new Vuetify({
-    icons: {
-        iconfont: 'mdi', // default
-        values: {
-            product: 'mdi-dropbox',
-            support: 'mdi-lifebuoy',
-            steam: 'mdi-steam-box',
-            pc: 'mdi-desktop-classic',
-            xbox: 'mdi-xbox',
-            playstation: 'mdi-playstation',
-            switch: 'mdi-nintendo-switch',
-        },
-    },
-})
 
 const app = new Vue({
     el: '#app',
     router,
-    vuetify: vtf,
+    vuetify: new Vuetify(),
     render: a => a(App)
 });
 

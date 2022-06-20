@@ -32,48 +32,20 @@
                 <v-list-item-subtitle>{{user_object.email}}</v-list-item-subtitle>
               </v-list-item-content>
 
-              <v-list-item-action>
-                <v-btn
-                    :class="fav ? 'red--text' : ''"
-                    icon
-                    @click="fav = !fav"
-                >
-                  <v-icon>mdi-heart</v-icon>
-                </v-btn>
-              </v-list-item-action>
+
             </v-list-item>
           </v-list>
 
           <v-divider></v-divider>
 
-          <v-list>
-            <v-list-item>
-              <v-list-item-action>
-                <v-switch
-                    v-model="message"
-                    color="purple"
-                ></v-switch>
-              </v-list-item-action>
-              <v-list-item-title>Enable messages</v-list-item-title>
-            </v-list-item>
-
-            <v-list-item>
-              <v-list-item-action>
-                <v-switch
-                    v-model="hints"
-                    color="purple"
-                ></v-switch>
-              </v-list-item-action>
-              <v-list-item-title>Enable hints</v-list-item-title>
-            </v-list-item>
-          </v-list>
+       
 
           <v-card-actions>
             <v-spacer></v-spacer>
 
             <v-btn
                 text
-                @click="menu = false"
+                to="/settings"
             >
               Settings
             </v-btn>
@@ -94,10 +66,8 @@
   export default {
     props: ['user_object'],
     data: () => ({
-    fav: true,
     menu: false,
-    message: false,
-    hints: true,
+    message: false
 }),
 }
 </script>

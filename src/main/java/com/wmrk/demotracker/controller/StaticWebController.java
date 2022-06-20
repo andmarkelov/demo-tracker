@@ -9,12 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class StaticWebController {
 
-    @GetMapping({"/", "/index"})
-    public String index() {
-        return "index.html";
-    }
-
-    @GetMapping({"/manage", "/reg", "/logout"})
+    @GetMapping({"/", "/index", "/reg", "/logout", "/settings"})
     public String vueApp(@AuthenticationPrincipal User currentUser, Model model) {
         model.addAttribute("spring_username", currentUser != null ? currentUser.getUsername() : "");
 

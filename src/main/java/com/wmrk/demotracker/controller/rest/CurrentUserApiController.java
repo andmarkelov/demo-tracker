@@ -2,7 +2,7 @@ package com.wmrk.demotracker.controller.rest;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.wmrk.demotracker.controller.json_view.GeoDeviceView;
-import com.wmrk.demotracker.customization.CurrentUser;
+import com.wmrk.demotracker.util.customization.CurrentUser;
 import com.wmrk.demotracker.entity.GeoDevice;
 import com.wmrk.demotracker.entity.User;
 import com.wmrk.demotracker.repo.GeoDeviceRepo;

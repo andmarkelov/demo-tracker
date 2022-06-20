@@ -3,11 +3,10 @@ package com.wmrk.demotracker.controller.rest;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.wmrk.demotracker.controller.json_view.GeoPointViews;
 import com.wmrk.demotracker.controller.json_view.GeoTrackViews;
-import com.wmrk.demotracker.entity.GeoDevice;
 import com.wmrk.demotracker.entity.geo.GeoPoint;
 import com.wmrk.demotracker.entity.geo.GeoTrack;
 import com.wmrk.demotracker.repo.GeoTrackRepo;
-import com.wmrk.demotracker.serializer.GeoJsonEntity;
+import com.wmrk.demotracker.util.serializer.GeoJsonEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

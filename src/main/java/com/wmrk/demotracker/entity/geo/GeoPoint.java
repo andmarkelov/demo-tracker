@@ -4,7 +4,7 @@ package com.wmrk.demotracker.entity.geo;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.wmrk.demotracker.controller.json_view.GeoPointViews;
 import com.wmrk.demotracker.controller.json_view.GeoTrackViews;
-import com.wmrk.demotracker.customization.Ownable;
+import com.wmrk.demotracker.util.customization.Ownable;
 import com.wmrk.demotracker.entity.User;
 
 import javax.persistence.Entity;

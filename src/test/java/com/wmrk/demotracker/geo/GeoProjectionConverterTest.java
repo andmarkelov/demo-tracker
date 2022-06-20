@@ -1,11 +1,12 @@
 package com.wmrk.demotracker.geo;
 
+import com.wmrk.demotracker.util.geo.GeoJsonGeometryProjectionConverter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static com.wmrk.demotracker.geo.GeoJsonGeometryProjectionConverter.GEOCONV_STRIDE_XY;
+import static com.wmrk.demotracker.util.geo.GeoJsonGeometryProjectionConverter.GEOCONV_STRIDE_XY;
 
 public class GeoProjectionConverterTest {
 

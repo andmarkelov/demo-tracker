@@ -1,4 +1,4 @@
-package com.wmrk.demotracker.customization;
+package com.wmrk.demotracker.util.customization;
 
 import com.wmrk.demotracker.entity.User;
 

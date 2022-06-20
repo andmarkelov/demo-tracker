@@ -1,18 +1,18 @@
-package com.wmrk.demotracker.serializer;
+package com.wmrk.demotracker.util.serializer;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.wmrk.demotracker.entity.geo.BaseGeoPoint;
-import com.wmrk.demotracker.geo.GeoJsonGeometryProjectionConverter;
-import com.wmrk.demotracker.geo.SphericalMercatorConverter;
+import com.wmrk.demotracker.util.geo.GeoJsonGeometryProjectionConverter;
+import com.wmrk.demotracker.util.geo.SphericalMercatorConverter;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.wmrk.demotracker.geo.SphericalMercatorConverter.LAT_LON_PRECISION;
+import static com.wmrk.demotracker.util.geo.SphericalMercatorConverter.LAT_LON_PRECISION;
 
 public class GeoJsonTrackSerializer extends StdSerializer<GeoJsonEntity> {
 

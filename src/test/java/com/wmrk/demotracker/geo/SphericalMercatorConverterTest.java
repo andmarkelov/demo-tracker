@@ -1,5 +1,6 @@
 package com.wmrk.demotracker.geo;
 
+import com.wmrk.demotracker.util.geo.SphericalMercatorConverter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
