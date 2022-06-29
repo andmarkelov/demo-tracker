@@ -17,8 +17,9 @@ export default {
     UserMenu
   },
   props: [
-      'user_object',
-    'title']
+    'user_object',
+    'title'
+  ]
 }
 </script>
 
