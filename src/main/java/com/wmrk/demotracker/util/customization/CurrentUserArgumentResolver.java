@@ -15,11 +15,16 @@ import java.security.Principal;
 
 @Component
 public final class CurrentUserArgumentResolver implements HandlerMethodArgumentResolver {
-    @Autowired
+
     private UserRepo userRepo;
 
     private final Class RESOLVED_CLASS = com.wmrk.demotracker.entity.User.class;
     private final Class ANNOTATION_CLASS = CurrentUser.class;
+
+    @Autowired
+    public CurrentUserArgumentResolver(UserRepo userRepo) {
+        this.userRepo = userRepo;
+    }
 
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {

@@ -13,11 +13,17 @@ import java.util.List;
 @Configuration
 @EnableAspectJAutoProxy
 class WebMvcConfig implements WebMvcConfigurer {
-    @Autowired
+
     private CurrentUserArgumentResolver currentUserArgumentResolver;
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         argumentResolvers.add(currentUserArgumentResolver);
     }
+
+    @Autowired
+    public WebMvcConfig(CurrentUserArgumentResolver currentUserArgumentResolver) {
+        this.currentUserArgumentResolver = currentUserArgumentResolver;
+    }
+
 }
