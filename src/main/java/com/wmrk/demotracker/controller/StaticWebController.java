@@ -21,4 +21,9 @@ public class StaticWebController {
         return "vue-app";
     }
 
+    @GetMapping("/map")
+    public String map() {
+        return "index";
+    }
+
 }
