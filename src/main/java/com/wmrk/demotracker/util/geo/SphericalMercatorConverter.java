@@ -5,11 +5,11 @@ public class SphericalMercatorConverter {
     private static final double RADIUS_MAJOR = 6378137.0; //Equatorial radius (m)
     private static final double RADIUS_MINOR = 6356752.3142; //Polar radius (m)
 
-    double xAxisProjection(double longitude) {
+    public double xAxisProjection(double longitude) {
         return Math.toRadians(longitude) * RADIUS_MAJOR;
     }
 
-    double yAxisProjection(double latitude) {
+    public double yAxisProjection(double latitude) {
         return Math.log(Math.tan(Math.PI / 4.0d + Math.toRadians(latitude) / 2.0d)) * RADIUS_MAJOR;
     }
 
