@@ -36,3 +36,5 @@ build/
 /.mvn/wrapper/
 /yarn-error.log
 /yarn.lock
+/node/
+/src/main/resources/static/gui/

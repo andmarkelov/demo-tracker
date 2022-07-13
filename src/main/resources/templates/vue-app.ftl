@@ -17,7 +17,11 @@
 </script>
 
 <div id="app"></div>
+<#if devMode?? && devMode>
+    <script src="http://localhost:8000/main.js"></script>
+<#else>
+    <script src="gui/main.js"></script>
+</#if>
 
-<script src="http://localhost:8000/main.js"></script>
 </body>
 </html>
