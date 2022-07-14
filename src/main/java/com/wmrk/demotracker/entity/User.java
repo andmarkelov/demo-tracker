@@ -7,9 +7,18 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
     @Column(unique = true)
     private String name;
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     boolean active;
 
     public String getPassword() {
@@ -35,11 +44,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
