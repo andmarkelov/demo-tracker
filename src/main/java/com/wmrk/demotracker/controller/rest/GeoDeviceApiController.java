@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/device")
-@PreAuthorize("#owned == null || #owned.owner.name == authentication.name")
+@PreAuthorize("#owned == null || hasRole('ROLE_ADMIN') || #owned.owner.name == authentication.name")
 public class GeoDeviceApiController {
     
     private GeoDeviceRepo geoDeviceRepo;
