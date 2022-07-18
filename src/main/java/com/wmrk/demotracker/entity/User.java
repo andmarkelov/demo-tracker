@@ -7,7 +7,7 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue
-    private Integer id;
+    private int id;
     @Column(unique = true)
     private String name;
 
@@ -44,11 +44,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

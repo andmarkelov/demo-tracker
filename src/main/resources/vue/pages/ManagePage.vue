@@ -26,7 +26,7 @@ import GeoposEditForm from "components/GeoposEditForm.vue"
 import TrackList from "components/TrackList.vue"
 import TrackInfo from "components/TrackInfo.vue"
 import BaseContainer from "components/BaseContainer.vue";
-import GeoMap from "components/GeoMap.vue";
+import GeoMap from "../components/GeoMap.vue";
 import DeviceSelector from "components/DeviceSelector.vue";
 import MyToolbar from "components/MyToolbar.vue";
 

@@ -3,6 +3,7 @@ import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import Vuetify from "vuetify"
 import 'vuetify/dist/vuetify.min.css'
+
 import App from 'pages/App.vue'
 import LoginPage from "pages/LoginPage.vue";
 import RegistrationPage from "pages/RegistrationPage.vue";
@@ -13,6 +14,8 @@ import SettingsPage from "pages/SettingsPage.vue";
 Vue.use(VueResource);
 Vue.use(Vuetify);
 Vue.use(VueRouter);
+
+
 
 const NotFound = { template: "<div>Page not found</div>" };
 
@@ -42,11 +45,11 @@ const router = new VueRouter({
     mode: "history"
 });
 
+const vuetify = new Vuetify();
 
 const app = new Vue({
     el: '#app',
     router,
-    vuetify: new Vuetify(),
+    vuetify: vuetify,
     render: a => a(App)
 });
-

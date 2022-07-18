@@ -25,7 +25,7 @@ public class UserService {
         if(newUser.getName().equalsIgnoreCase("admin")) {
             newUser.getRoles().add(Role.ROLE_ADMIN);
         }
-        newUser.setId(null);
+        newUser.setId(0);
         userRepo.save(newUser);
         return newUser;
     }

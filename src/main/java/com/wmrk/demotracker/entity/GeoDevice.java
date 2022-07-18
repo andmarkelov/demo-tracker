@@ -17,7 +17,7 @@ public class GeoDevice implements Ownable {
     private String guid;
     @JsonView(GeoDeviceView.User.class)
     private String name;
-    @ManyToOne(optional = false, cascade = CascadeType.REMOVE)
+    @ManyToOne(optional = false)
     @JsonView(GeoDeviceView.Admin.class)
     private User owner;
 
