@@ -7,6 +7,7 @@ import com.wmrk.demotracker.entity.User;
 import com.wmrk.demotracker.entity.geo.GeoTrack;
 import com.wmrk.demotracker.repo.GeoDeviceRepo;
 import com.wmrk.demotracker.repo.GeoTrackRepo;
+import com.wmrk.demotracker.service.GeoDeviceService;
 import com.wmrk.demotracker.util.customization.CurrentUser;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,13 @@ public class GeoDeviceApiController {
     
     private GeoDeviceRepo geoDeviceRepo;
     private GeoTrackRepo geoTrackRepo;
+    private GeoDeviceService geoDeviceService;
 
     @Autowired
-    public GeoDeviceApiController(GeoDeviceRepo geoDeviceRepo, GeoTrackRepo geoTrackRepo) {
+    public GeoDeviceApiController(GeoDeviceRepo geoDeviceRepo, GeoTrackRepo geoTrackRepo, GeoDeviceService geoDeviceService) {
         this.geoDeviceRepo = geoDeviceRepo;
         this.geoTrackRepo = geoTrackRepo;
+        this.geoDeviceService = geoDeviceService;
     }
 
     @GetMapping("{id}/tracks")
@@ -56,5 +59,15 @@ public class GeoDeviceApiController {
         BeanUtils.copyProperties(newDevice, curDevice, "id", "owner");
         geoDeviceRepo.save(curDevice);
         return curDevice;
+    }
+
+    /**
+     * Erase tracks
+     * @param device
+     * @return
+     */
+    @DeleteMapping("{id}/tracks")
+    public void eraseTracks(@PathVariable("id") @P("owned") GeoDevice device) {
+        geoDeviceService.eraseTracks(device);
     }
 }

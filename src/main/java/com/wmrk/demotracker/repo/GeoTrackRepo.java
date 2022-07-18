@@ -9,4 +9,5 @@ import java.util.List;
 public interface GeoTrackRepo extends CrudRepository<GeoTrack, Long> {
     public List<GeoTrack> findAllByDevice(GeoDevice device);
     public GeoTrack findFirstByDeviceOrderByIdDesc(GeoDevice device);
+    public void deleteGeoTracksByDevice(GeoDevice device);
 }

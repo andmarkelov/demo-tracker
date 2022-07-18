@@ -21,7 +21,7 @@
         </v-tab-item>
         <v-tab-item>
           <v-card flat class="ml-auto mr-auto mt-3" style="width: 500px;display: block;">
-            <device-list-managed :items="devicesItems" @edit="editDevice"/>
+            <device-list-managed @edit="editDevice"/>
             <v-btn class="ma-3" @click="addNewDevice()">Add new device</v-btn>
             <new-device-dialog @saved="onSaveDevice" :deviceObject="curDeviceObject" v-model="newDeviceDialogVisible"></new-device-dialog>
           </v-card>
@@ -62,7 +62,8 @@ export default {
   methods: {
     addNewDevice() {
       this.curDeviceObject.id = 0;
-      this.curDeviceObject.name = "new device " + Math.round(Math.random() * 1000);
+      this.curDeviceObject.guid = "";
+      this.curDeviceObject.name = "new device #id";
       this.newDeviceDialogVisible = true;
     },
     onSaveDevice(obj) {
@@ -89,7 +90,7 @@ export default {
 
     },
     editDevice(obj) {
-      this.curDeviceObject = obj;
+      this.curDeviceObject = {...obj};
       this.newDeviceDialogVisible = true;
     }
   }

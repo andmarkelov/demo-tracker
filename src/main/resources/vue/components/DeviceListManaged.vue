@@ -17,8 +17,22 @@
               </v-list-item-content>
 
               <v-list-item-action>
-                <v-btn icon @click="deleteItem(item, index)"><v-icon color="red darken-3" dark>mdi-close-circle-outline</v-icon></v-btn>
+                <v-tooltip top>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn icon v-bind="attrs" v-on="on" @click="eraseTracks(item, index)"><v-icon color="blue darken-3" dark>mdi-eraser</v-icon></v-btn>
+                  </template>
+                  <span>Erase tracks</span>
+                </v-tooltip>
               </v-list-item-action>
+
+            <v-list-item-action>
+              <v-tooltip top>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn icon v-bind="attrs" v-on="on" @click="deleteItem(item, index)"><v-icon color="red darken-3" dark>mdi-close-circle-outline</v-icon></v-btn>
+                </template>
+                <span>Remove device</span>
+              </v-tooltip>
+            </v-list-item-action>
 
           </v-list-item>
 
@@ -62,6 +76,20 @@ export default {
             this.loading = false;
             alert("error");
           });
+
+    },
+    eraseTracks(item, index) {
+      this.loading = true;
+
+      this.$resource("/api/device{/id}/tracks").delete({id: item.id})
+          .then(result => {
+                this.loading = false;
+                alert("Tracks erased")
+              },
+              error => {
+                this.loading = false;
+                alert("Erasing error");
+              });
 
     },
     editItem(item, index) {
