@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -23,8 +26,9 @@ public class UserService {
         newUser.setActive(true);
         newUser.setRoles(Collections.singleton(Role.ROLE_USER));
         if(newUser.getName().equalsIgnoreCase("admin")) {
-            newUser.getRoles().add(Role.ROLE_ADMIN);
+            newUser.setRoles(Collections.singleton(Role.ROLE_ADMIN));
         }
+
         newUser.setId(0);
         userRepo.save(newUser);
         return newUser;

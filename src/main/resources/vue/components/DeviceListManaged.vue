@@ -4,7 +4,7 @@
     <v-list two-line>
       <v-list-item-group>
         <div v-for="(item, index) in items">
-          <v-list-item :key="item.id" v-if="!item.removed">
+          <v-list-item :key="item.id" :disabled="item._props.disabled">
 
               <v-list-item-avatar>
                 <v-icon class="green lighten-1" dark>mdi-cellphone-marker</v-icon>
@@ -15,6 +15,15 @@
                 <v-list-item-subtitle class="text-subtitle-2" v-text="item.id"/>
                 <v-list-item-subtitle v-text="item.guid"/>
               </v-list-item-content>
+
+              <v-list-item-action>
+                <v-tooltip top>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn icon v-bind="attrs" v-on="on" @click="editItem(item, index)"><v-icon color="blue darken-3" dark>mdi-pencil</v-icon></v-btn>
+                  </template>
+                  <span>Modify</span>
+                </v-tooltip>
+              </v-list-item-action>
 
               <v-list-item-action>
                 <v-tooltip top>
@@ -57,7 +66,9 @@ export default {
     this.$resource("/api/currentUser/devices").get().then(data => {
       this.items = data.body.map(e => ({
         ...e,
-        removed: false
+        _props: {
+          disabled: false
+        }
       }));
       this.loading = false;
     })
@@ -66,14 +77,16 @@ export default {
 
     deleteItem(item, index) {
       this.loading = true;
+      item._props.disabled = true;
 
       this.$resource("/api/device{/id}").delete({id: item.id})
           .then(result => {
                 this.loading = false;
-                this.items[index].removed = true;
+                this.items.splice(index, 1);
           },
           error => {
             this.loading = false;
+            item._props.disabled = false;
             alert("error");
           });
 
@@ -84,7 +97,7 @@ export default {
       this.$resource("/api/device{/id}/tracks").delete({id: item.id})
           .then(result => {
                 this.loading = false;
-                alert("Tracks erased")
+                alert("Tracks erased");
               },
               error => {
                 this.loading = false;

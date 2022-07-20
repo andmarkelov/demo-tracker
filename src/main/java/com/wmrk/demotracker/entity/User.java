@@ -10,6 +10,12 @@ public class User {
     private int id;
     @Column(unique = true)
     private String name;
+    private String password;
+    boolean active;
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
 
     public boolean isActive() {
         return active;
@@ -18,8 +24,6 @@ public class User {
     public void setActive(boolean active) {
         this.active = active;
     }
-
-    boolean active;
 
     public String getPassword() {
         return password;
@@ -36,13 +40,6 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-
-    private String password;
-
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
-    @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
 
     public int getId() {
         return id;
