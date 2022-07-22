@@ -1,18 +1,18 @@
 <template>
-    <iframe id="map-iframe" class="map-iframe" src="/map/index.html"> </iframe>
+    <iframe ref="mapIframe" class="map-iframe" src="/map/index.html"> </iframe>
 </template>
 
 <script>
 export default {
   props: ['track'],
   watch: {
-    async track(newTrack, oldTrack) {
+    async track(newTrack) {
       const response = await fetch(`/api/track/${newTrack.id}/geoJson`);
-      response.json().then(function (result) {
-        document.getElementById("map-iframe").contentWindow
-            .postMessage({geo: result.routes[0].geometry}, '*');
-      });
+      const result = await response.json();
 
+      this.$refs.mapIframe.contentWindow.postMessage({
+        geo: result.routes[0].geometry
+      }, '*');
     }
   }
 }

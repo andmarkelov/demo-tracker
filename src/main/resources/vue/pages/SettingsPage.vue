@@ -20,11 +20,7 @@
 
         </v-tab-item>
         <v-tab-item>
-          <v-card flat class="ml-auto mr-auto mt-3" style="width: 500px;display: block;">
-            <device-list-managed @edit="editDevice"/>
-            <v-btn class="ma-3" @click="addNewDevice()">Add new device</v-btn>
-            <new-device-dialog @saved="onSaveDevice" :deviceObject="curDeviceObject" v-model="newDeviceDialogVisible"></new-device-dialog>
-          </v-card>
+         <DeviceSettingsTabContent/>
         </v-tab-item>
       </v-tabs-items>
   </div>
@@ -33,69 +29,24 @@
 
 <script>
 import MyToolbar from "../components/MyToolbar.vue";
-import DeviceListManaged from "../components/DeviceListManaged.vue";
-import NewDeviceDialog from "../dialogs/NewDeviceDialog.vue";
-
+import DeviceSettingsTabContent from "../components/DeviceSettingsTabContent.vue";
 export default {
-  props: {
-
-  },
   components: {
-    NewDeviceDialog,
-    MyToolbar,
-    DeviceListManaged
+    DeviceSettingsTabContent,
+    MyToolbar
   },
   data() {
-    return {
+      return  {
       user_object: {
         name: document.spring_username,
         email:"pupalupa@msk.ru",
         userpic: "https://cdn.vuetifyjs.com/images/john.jpg"
       },
       tabs: 2,
-      text: undefined,
-      devicesItems: [],
-      newDeviceDialogVisible: false,
-      curDeviceObject: {}
-    }
-  },
-  methods: {
-    addNewDevice() {
-      this.curDeviceObject.id = 0;
-      this.curDeviceObject.guid = "";
-      this.curDeviceObject.name = "new device #id";
-      this.newDeviceDialogVisible = true;
-    },
-    onSaveDevice(obj) {
-      if(obj.id == 0) {
-        //add new
-        this.$http.post("/api/device", obj)
-            .then(res => {
-                  this.devicesItems.push(res.body)
-                },
-                error => {
-                    alert("error")
-                });
-      } else {
-        //edit
-        this.$resource("/api/device{/id}").update({id: obj.id}, obj)
-            .then(result => {
-                  obj.name = result.body.name;
-                },
-                error => {
-                  alert("error");
-                });
-
-      }
-
-    },
-    editDevice(obj) {
-      this.curDeviceObject = {...obj};
-      this.newDeviceDialogVisible = true;
+      text: undefined
     }
   }
 }
-
 </script>
 
 <style scoped>

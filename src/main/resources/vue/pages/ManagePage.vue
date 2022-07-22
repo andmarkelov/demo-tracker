@@ -21,14 +21,14 @@
 </template>
 
 <script>
-import GeoposList from "components/GeoposList.vue"
-import GeoposEditForm from "components/GeoposEditForm.vue"
-import TrackList from "components/TrackList.vue"
-import TrackInfo from "components/TrackInfo.vue"
-import BaseContainer from "components/BaseContainer.vue";
+import GeoposList from "../components/GeoposList.vue"
+import GeoposEditForm from "../components/GeoposEditForm.vue"
+import TrackList from "../components/TrackList.vue"
+import TrackInfo from "../components/TrackInfo.vue"
+import BaseContainer from "../components/BaseContainer.vue";
 import GeoMap from "../components/GeoMap.vue";
-import DeviceSelector from "components/DeviceSelector.vue";
-import MyToolbar from "components/MyToolbar.vue";
+import DeviceSelector from "../components/DeviceSelector.vue";
+import MyToolbar from "../components/MyToolbar.vue";
 
 export default {
   components: {
@@ -53,16 +53,7 @@ export default {
         userpic: "https://cdn.vuetifyjs.com/images/john.jpg"
       }
     }
-  },
-  created() {
-
   }
-  // ,
-  // methods: {
-  //   trackSelectionChanged(event) {
-  //     this.current_track = event;
-  //   }
-  // }
 }
 </script>
 

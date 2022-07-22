@@ -19,7 +19,7 @@
               <v-list-item-action>
                 <v-tooltip top>
                   <template v-slot:activator="{ on, attrs }">
-                    <v-btn icon v-bind="attrs" v-on="on" @click="editItem(item, index)"><v-icon color="blue darken-3" dark>mdi-pencil</v-icon></v-btn>
+                    <v-btn icon v-bind="attrs" v-on="on" @click="editItem(item)"><v-icon color="blue darken-3" dark>mdi-pencil</v-icon></v-btn>
                   </template>
                   <span>Modify</span>
                 </v-tooltip>
@@ -28,7 +28,7 @@
               <v-list-item-action>
                 <v-tooltip top>
                   <template v-slot:activator="{ on, attrs }">
-                    <v-btn icon v-bind="attrs" v-on="on" @click="eraseTracks(item, index)"><v-icon color="blue darken-3" dark>mdi-eraser</v-icon></v-btn>
+                    <v-btn icon v-bind="attrs" v-on="on" @click="eraseTracks(item)"><v-icon color="blue darken-3" dark>mdi-eraser</v-icon></v-btn>
                   </template>
                   <span>Erase tracks</span>
                 </v-tooltip>
@@ -37,7 +37,7 @@
             <v-list-item-action>
               <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn icon v-bind="attrs" v-on="on" @click="deleteItem(item, index)"><v-icon color="red darken-3" dark>mdi-close-circle-outline</v-icon></v-btn>
+                  <v-btn icon v-bind="attrs" v-on="on" @click="deleteItem(item)"><v-icon color="red darken-3" dark>mdi-close-circle-outline</v-icon></v-btn>
                 </template>
                 <span>Remove device</span>
               </v-tooltip>
@@ -55,58 +55,21 @@
 </template>
 
 <script>
+import CommonManagedList from "../mixins/CommonManagedList";
+
 export default {
-  props: ['items'],
-  data () {
-    return {
-      loading: true
-    }
-  },
-  created() {
-    this.$resource("/api/currentUser/devices").get().then(data => {
-      this.items = data.body.map(e => ({
-        ...e,
-        _props: {
-          disabled: false
-        }
-      }));
-      this.loading = false;
-    })
-  },
+  mixins: [CommonManagedList],
   methods: {
 
-    deleteItem(item, index) {
-      this.loading = true;
-      item._props.disabled = true;
-
-      this.$resource("/api/device{/id}").delete({id: item.id})
-          .then(result => {
-                this.loading = false;
-                this.items.splice(index, 1);
-          },
-          error => {
-            this.loading = false;
-            item._props.disabled = false;
-            alert("error");
-          });
+    deleteItem(item) {
+      this.$emit('deleted', item, this);
+    },
+    eraseTracks(item) {
+      this.$emit('tracksErased', item, this);
 
     },
-    eraseTracks(item, index) {
-      this.loading = true;
-
-      this.$resource("/api/device{/id}/tracks").delete({id: item.id})
-          .then(result => {
-                this.loading = false;
-                alert("Tracks erased");
-              },
-              error => {
-                this.loading = false;
-                alert("Erasing error");
-              });
-
-    },
-    editItem(item, index) {
-      this.$emit('edit', item);
+    editItem(item) {
+      this.$emit('edit', item, this);
     }
   }
 }
